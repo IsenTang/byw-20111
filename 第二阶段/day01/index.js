@@ -118,5 +118,37 @@ String(numToStr));
 console.log('nullToStr ==>',
 String(nullToStr));
 
+// * 转数字
+var strToNum = '1a';
+console.log('Number===> ',Number(strToNum));
+var emptyStrToNum = '';
+console.log('Number===> ',Number(emptyStrToNum));
+
+var height = '100px';
+console.log(Number(height) * Number(height));
+console.log(parseInt(height) * parseInt(height));
+
+// * parseInt parseFloat
+var str12 = '110';
+console.log('str12 ==>',parseInt(str12));
+
+var str22 = '1a';
+console.log('str22 ==>',parseFloat(str22));
 
 
+// * 转换布尔值
+
+// * number ---> boolean
+var numToBoolean =  NaN;
+
+console.log('numToBoolean ==>',
+Boolean(numToBoolean));
+
+// * string ----> boolean
+var strToBoolean = '1';
+console.log('strToBoolean ==>',
+Boolean(strToBoolean));
+
+// * null & undefinded
+console.log(Boolean(null));
+console.log(Boolean(undefined));
