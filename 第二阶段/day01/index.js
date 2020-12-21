@@ -97,3 +97,26 @@ if(typeof aNum === 'number'
     
     console.log(aNum * bNum);
 }
+
+// * 强制类型转换
+// * 转字符串（string）
+
+var numToStr = 1;
+var nullToStr = undefined;
+
+// * number ---> string
+console.log('numToStr ==>',
+numToStr.toString());
+
+console.log('numToStr ==>',
+String(numToStr));
+
+// * null || undefined --> string
+// console.log('nullToStr ==>',
+// nullToStr.toString());
+
+console.log('nullToStr ==>',
+String(nullToStr));
+
+
+
