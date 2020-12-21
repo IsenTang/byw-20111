@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+
+        body{
+            background-color:black;
+        }
+        .container{
+            width: 400px;
+            height: 500px;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+            margin-top: 50px;
+            position: relative;
+            animation: heartbeat 1.5s infinite alternate;
+        }
+
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .left{
+            left:40px;
+        }
+
+        .right{
+            right:40px;
+        }
+
+        .bottom{
+            width: 180px;
+            height: 180px;
+            background-color: red;
+            position: absolute;
+            top:84px;
+            left:110px;
+            transform: rotate(45deg);
+        }
+
+        @keyframes heartbeat {
+            from{}
+            to{
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="child left"></div>
+        <div class="child right"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>
