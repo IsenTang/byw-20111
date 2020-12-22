@@ -37,6 +37,8 @@ false || console.log(5);
 
 
 // ! 与或运算
+// * 与
+// * 本质符合短路原则
 var value6 = 1 && 2;
 console.log('value6: ', value6);
 var value7 = 1 && '';
@@ -44,7 +46,17 @@ console.log('value7: ', value7);
 var value8 = 0 && '123';
 console.log('value8: ', value8);
 
+// * 或
+var value9 = 3 || 1;
+console.log('value9: ', value9);
+var value10 = 0 || '';
+console.log('value10: ', value10);
 
+
+console.log('' || 'hello');
+console.log(-1 || 'hello');
+console.log('' && 'hello');
+console.log(-1 && 'hello');
 
 
 
