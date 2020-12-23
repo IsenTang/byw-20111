@@ -29,9 +29,33 @@ for(var i = 0; i < array.length; i++ ){
 
     console.log(array[i]);
     if(array[i] === '李杨'){
-
         console.log(array[i]);
         break;
     };
 }
+
+// for(var i = 0 ; i < 4;i++){
+
+//     console.log('第'+i+'次');
+
+//     for(var j = 0; j<4;j++){
+
+//         if(j > 1){
+//             break;
+//         }
+//         console.log('j ===>',j)
+//     }
+// }
+
+// * continue
+
+for (var i = 0; i < 10; i++) {
+    
+    if(i === 2){
+        continue;
+    };
+
+    console.log(i);
+}
+
 
