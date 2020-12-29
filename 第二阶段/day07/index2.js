@@ -42,23 +42,66 @@
 // console.log('allElementByCssClass ==>',allElementByCssClass);
 
 
-var mainEle = document.getElementById('main');
-var childrenNodes = mainEle.childNodes;
+// var mainEle = document.getElementById('main');
+// var childrenNodes = mainEle.childNodes;
 
-console.log(childrenNodes)
-for(var i = 0; i< childrenNodes.length;i++){
+// console.log(childrenNodes)
+// for(var i = 0; i< childrenNodes.length;i++){
 
-    if(childrenNodes[i].nodeType === 1 && childrenNodes[i].className.includes('red')){
+//     if(childrenNodes[i].nodeType === 1 && childrenNodes[i].className.includes('red')){
 
-      childrenNodes[i].style.backgroundColor = 'yellow';
-    }
-    // console.log(childrenNodes[i]);
-}
+//       childrenNodes[i].style.backgroundColor = 'yellow';
+//     }
+//     // console.log(childrenNodes[i]);
+// }
 
-var eles = document.getElementsByClassName('content red');
-console.log(eles);
+// var eles = document.getElementsByClassName('content red');
 
-for(var i = 0; i< eles.length ; i++){
+// for(var i = 0; i< eles.length ; i++){
 
-    eles[i].style.backgroundColor = 'green'
-}
+//     eles[i].style.backgroundColor = 'green'
+// }
+
+// * 获取属性 (attribute)
+// var ele = document.getElementById('input');
+// // ===> { value:'123',type:'text'...... }
+// // * get set  
+// console.log(ele.getAttribute('type'));
+
+// setTimeout(function(){
+
+//     ele.setAttribute('value','after-set')
+//     ele.value = '直接修改'
+// },2000)
+
+// console.log('value ===>',ele.value);
+// ! 只要DOM树发生变化，就会触发rerender（重新渲染）
+
+// * 写入元素
+// var ele = document.getElementById('test-wirte');
+
+// // var ele = document.getElementById('test');
+
+// setTimeout(function(){
+//     // ele.innerHTML = '<div>123</div>';
+//     console.log(ele.innerText);
+//     ele.innerText = '<div>123</div>';
+// },2000)
+
+// var para = document.createElement('p');
+
+var parent = document.getElementById('parent');
+
+// parent.appendChild(para);
+
+// para.innerText = 'hello'
+
+parent.innerHTML = '<p>hello</p>';
+
+parent.innerHTML += '<p>world</p>';
+
+console.log(parent.innerHTML);
+
+// var txt = document.createTextNode('hello world');
+
+// para.appendChild(txt);

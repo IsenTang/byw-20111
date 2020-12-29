@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container{
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="test">
+            <span>用户名：</span><input/>
+        </div>
+        <div class="test">
+            <span>密码：</span><input type="password"/>
+        </div>
+    </div>
+
+    <div class="practice-container">
+
+
+    </div>
+
+
+    <script>
+        var containerEle = document.getElementsByClassName('practice-container')[0];
+        containerEle.style.width = '300px';
+        // containerEle.innerHTML =    "<div class=\"test\">" +
+        //                                 "<span>用户名：</span><input/>" +
+        //                             "</div>"+
+        //                             "<div class=\"test\">"+
+        //                                 "<span>密码：</span><input type=\"password\"/>"+
+        //                             "</div>"
+
+        containerEle.innerHTML =    "<div class=\"test\">" +
+                                        "<span>用户名：</span><input/>"+
+                                    "</div>"+
+                                    "<div class=\"test\">"+
+                                        "<span>密码：</span><input type=\"password\"/>"+
+                                    "</div>"
+    </script>
+</body>
+</html>
