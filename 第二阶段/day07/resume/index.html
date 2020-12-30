@@ -13,9 +13,12 @@
 
 
   </style>
+
+  <!-- markdown github css -->
   <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css'></link>
   
-  <script src="./marked.js"></script>
+  <!-- markdown 语法 -->
+  <script src="./marked.js"></script> 
   <script>
   
       /* 间隔时间 */
@@ -161,6 +164,8 @@
               if(leftCount >= styleContent.slice(0,4).join('').length){
   
                 /* marked */
+
+                console.log(resumeContent[0].substring(0,rightCount));
                 resume.innerHTML = marked(resumeContent[0].substring(0,rightCount));
               }    
             }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style id='styleTag'>
+        
+    </style>
+</head>
+<body>
+    
+
+    <pre class="container">
+        <code>
+.container{
+    width:100px;
+}
+        </code>
+    </pre>
+
+
+    <!-- <script>
+
+        var containerEle = document.getElementsByClassName('container')[0];
+        /* 动态style部分 */
+        var styleTag = document.getElementById('styleTag');
+
+        var str = '*{transition: all .3s;}.container{ border:1px soild black;width:200px ; height:200px; background-color:red }';
+
+        var count = 0;
+
+        var id = setInterval(function(){
+            count += 1;
+            // containerEle.innerText = str.substring(0,count);
+            if(count === str.length){
+
+                clearInterval(id);
+            }
+            styleTag.innerHTML = str.substring(0,count);
+        },80)
+    </script> -->
+</body>
+</html>
