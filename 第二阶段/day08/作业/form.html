@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        .test{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container{
+            width: 300px;
+        }
+
+        .username-warning{
+
+            display: none;
+        }
+
+        .password-warning{
+
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="test">
+            <span>用户名：</span><input class="username"/><span class="username-warning"></span>
+        </div>
+        <div class="test">
+            <span>密码：</span><input type="password" class='password'/><span class="password-warning"></span>
+        </div>
+
+        <button class="btn" disabled>提交</button>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>

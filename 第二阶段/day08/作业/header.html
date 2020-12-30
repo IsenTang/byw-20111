@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+
+        .container{
+            width: 50px;
+            height: 200px;
+            background-color: aquamarine;
+            display: none;
+        }
+
+        .setting{
+            cursor: pointer;
+            background-color: red;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="setting">
+        设置
+
+    </div>
+    
+    <div class="container"></div>
+    
+
+    <script >
+
+        var settingEle = document.getElementsByClassName('setting')[0];
+
+        var containerEle = document.getElementsByClassName('container')[0];
+
+        settingEle.onmouseover = function(){
+
+            containerEle.style.display = 'flex';
+        }
+
+        containerEle.onmouseout = function(){
+
+            containerEle.style.display = 'none';
+        }
+
+
+    </script>
+</body>
+</html>
