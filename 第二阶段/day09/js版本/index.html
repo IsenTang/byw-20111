@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <!-- 标题 -->
+    <title>轮播图js实现</title>
+    <!-- 宽度自适应 -->
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1" /> -->
+    <!-- css -->
+    <link rel="stylesheet" href="static/index.css" />
+    
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 轮播图主体 -->
+      <ul class="banner">
+
+        <li class="banner_li">
+            <a href="javascript:;">
+              <img src="../img/cat5.jpeg"  class="banner_img" />
+            </a>
+        </li>
+
+        <li class="banner_li">
+          <a href="javascript:;">
+            <img src="../img/cat1.jpeg"  class="banner_img" />
+          </a>
+        </li>
+
+        <li class="banner_li">
+          <a href="javascript:;">
+            <img src="../img/cat2.jpeg"  class="banner_img" />
+          </a>
+        </li>
+
+        <li class="banner_li">
+          <a href="javascript:;">
+            <img src="../img/cat3.jpeg"  class="banner_img" />
+          </a>
+        </li>
+
+        <li class="banner_li">
+          <a href="javascript:;">
+            <img src="../img/cat4.jpeg"  class="banner_img" />
+          </a>
+        </li>
+
+        <li class="banner_li">
+          <a href="javascript:;">
+            <img src="../img/cat5.jpeg"  class="banner_img" />
+          </a>
+        </li>
+
+        <li class="banner_li">
+            <a href="javascript:;">
+              <img src="../img/cat1.jpeg"  class="banner_img" />
+            </a>
+        </li>
+      </ul>
+
+      <!--伴随移动的小圆点-->
+      <div class="button_container">
+        <span index="1" class="button_container_circle on"></span>
+        <span index="2" class="button_container_circle"></span>
+        <span index="3" class="button_container_circle"></span>
+        <span index="4" class="button_container_circle"></span>
+        <span index="5" class="button_container_circle"></span>
+      </div>
+
+      <!--向左 low than -->
+      <a href="javascript:;" class="prev arrow" >&lt;</a> 
+      <!--向右 great than -->  
+      <a href="javascript:;" class="next arrow">&gt;</a> 
+    </div>
+  </body>
+
+  <!-- js -->
+  <script src="static/index.js"></script>
+</html>
