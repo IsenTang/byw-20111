@@ -39,3 +39,43 @@ $('#input').attr('value',function(){
 });
 
 $('#input').removeAttr('value');
+
+// * 事件
+// var btnEle = document.getElementById('btn');
+// btnEle.onclick = function(){
+    
+// }
+// $('#btn').click(function(){
+
+//     console.log(11);
+// })
+
+// * html注入
+// var parentEle = document.getElementById('parent');
+// parentEle.innerText = '<div>123</div>';
+// parentEle.innerHTML = '<div>123</div>';
+// $('#parent').html('<div>123</div>');
+$('#parent').text('<div>123</div>');
+
+// var inputEle = document.getElementById('input');
+// inputEle.onkeydown = function(){
+
+//     console.log('onkeydown');
+// }
+
+// inputEle.onkeypress = function(){
+
+//     console.log('onkeypress');
+// }
+
+// inputEle.onkeyup = function(){
+
+//     console.log('onkeyup');
+// }
+
+// inputEle.onchange = function(e){
+
+//     console.log('value ===>',e.target.value)
+// }
+
+
