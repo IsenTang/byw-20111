@@ -29,12 +29,25 @@
 
 // console.log(b);
 
-let { foo : test } = { foo: 'aaa', bar: 'bbb' };
+// let { foo : test } = { foo: 'aaa', bar: 'bbb' };
 
 // console.log(test);
 
-let { x = 3 } = { };
+// let { x = 3 } = { };
 
-console.log(x);
+// console.log(x);
+
+function main({ name }){
+    console.log(test); 
+}
+
+const obj = {
+    name : 'isen',
+    age:29
+}
+
+main(obj);
+
+
 
 

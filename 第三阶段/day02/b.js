@@ -14,10 +14,10 @@
 // console.log(a);
 // a.main();
 
-const { person } = require('./a');
+// const { person } = require('./a');
 
-const { name , age } = person;
+// const { name , age } = person;
 
-console.log(name);
+// console.log(name);
 
-console.log(2021 - age)
+// console.log(2021 - age)

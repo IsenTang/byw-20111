@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        // let main = function(){
+
+        //     console.log(this);
+        // }
+
+        // let main = () => {
+
+        //     console.log(this);
+        // }
+    
+        // let obj = {
+        //     name:'obj',
+        //     func : main,
+        //     obj:{
+        //         func : main
+        //     }
+        // }
+
+        // main();
+        // obj.func();
+
+        // obj.obj.func();
+
+        // function Person(name){
+
+        //     this.name = name;
+        // }
+
+        // let Person = (name)=>{
+
+        //     this.name = name;
+        // }
+
+        // new Person('isen');
+        // window.birth = 1992;
+        // let obj = {
+        //     birth: 1990,
+        //     getAge:  () => {
+        //         let b = this.birth;
+
+        //         console.log('b ===>',b);
+        //         let fn =  () => { 
+
+        //             // * ===> 2021
+        //             console.log('inner ===>',this.birth);
+        //             console.log(new Date().getFullYear() - this.birth) 
+        //         };
+        //         return fn();
+        //     }
+        // };
+
+        // obj.getAge();
+        var x = 'out'
+        let obj1 = {
+            x: 22,
+            say: function () { console.log(this.x) },
+            say2: () => { console.log(this.x) },
+            say3: function(){
+
+                    // * this ===> obj1
+                    const func = () => {
+
+                        // * this ===> obj1
+                        console.log(this.x)
+                    }
+
+                    return func;
+                }
+            }
+        obj1.say(); // ==>
+        obj1.say2(); 
+        const func = obj1.say3();
+
+        let obj2 = {
+            func : func
+        }
+
+        obj2.func();
+
+    </script>
+</body>
+</html>
