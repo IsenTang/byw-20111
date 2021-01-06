@@ -151,22 +151,22 @@ window.onload = function () {
 
     for(var i = 0 ; i< buttons.length; i++){
         
-      (function(ii){
+      // (function(ii){
 
-        buttons[ii].onclick = function (){
+      //   buttons[ii].onclick = function (){
   
-          index = buttons[ii].getAttribute('index');
-          animate();
-        }
-      })(i)
+      //     index = buttons[ii].getAttribute('index');
+      //     animate();
+      //   }
+      // })(i)
 
-      // buttons[i].onclick = function (){
+      buttons[i].onclick = function (){
 
-      //   console.log(i);
-      //   index = buttons[i].getAttribute('index');
+        console.log(i);
+        index = buttons[i].getAttribute('index');
 
-      //   animate();
-      // }
+        animate();
+      }
         
     }
     
