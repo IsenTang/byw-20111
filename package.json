@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/IsenTang/byw-20111#readme",
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "lodash": "^4.17.20"
   }
 }
