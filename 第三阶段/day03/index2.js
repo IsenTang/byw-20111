@@ -1,6 +1,5 @@
 const fs = require('fs');
-const { reject } = require('lodash');
-const { resolve } = require('path');
+
 const path = require('path');
 
 // fs.readFile(path.join(__dirname,'test.txt'),'utf-8',(err,data)=>{
@@ -71,15 +70,14 @@ function readFilePromise(fileName){
 //     console.log(err);
 // })
 
-new Promise((res,rej)=>{
-    setTimeout(()=>{
-        res();
-    },1000);
-}).then(()=>{
+// new Promise((res,rej)=>{
+//     setTimeout(()=>{
+//         res();
+//     },1000);
+// }).then(()=>{
 
-    console.log(1);
-})
-
+//     console.log(1);
+// })
 
 
 // function writeFilePromise(fileName,content){
