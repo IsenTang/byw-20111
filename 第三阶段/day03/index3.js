@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { find } = require('lodash');
 const path = require('path');
 // async function main(){
    
@@ -13,17 +14,17 @@ const path = require('path');
 
 // main();
 
-// function sleep(time){
-//     return new Promise((res)=>{
+function sleep(time){
+    return new Promise((res)=>{
 
-//         setTimeout(() => {
+        setTimeout(() => {
             
-//             console.log('延时器结束');
-//             res();
+            console.log('延时器结束');
+            res();
 
-//         }, time);
-//     })
-// }
+        }, time);
+    })
+}
 function readFilePromise(fileName){
 
     let promise =  new Promise((res,rej)=>{
@@ -56,36 +57,85 @@ function writeFilePromise(fileName,content){
     })
 }
 
-async function main(){
-    try {
+// async function main(){
+//     try {
 
-        // const result1 = await readFilePromise('1.txt');
-        // const result2 = await readFilePromise('test.txt');
+//         // const result1 = await readFilePromise('1.txt');
+//         // const result2 = await readFilePromise('test.txt');
+//         // const result = await Promise.all([readFilePromise('1.txt'),readFilePromise('test.txt')]);
 
-        const result = await Promise.all([readFilePromise('1.txt'),readFilePromise('test.txt')]);
+//         // await writeFilePromise('dist.txt',`promise.all 写入${result[0]}${result[1]}`);
+//         let result = await readFilePromise('2.txt');
+//         // normal();
+//         console.log(result);
 
-        await writeFilePromise('dist.txt',`promise.all 写入${result[0]}${result[1]}`);
+//         await writeFilePromise('dist.txt',`写入${result}`);
 
-        console.log('end');
-    } catch (e) {
+//         console.log('end');
+//     } catch (e) {
         
-        console.log('error ===>',e);
-    } finally{
+//         console.log('error ===>',e);
+//     } finally{
 
-        console.log('finally');
-    }
-}
+//         console.log('finally');
+//     }
+// }
+// main();
 
-async function test(){
+// function normal(){
 
-    await main();
+//     console.log('this is normal function');
+// }
 
-    console.log('test end');
-}
+// async function test(){
 
-test();
+//     await main();
+
+//     console.log('test end');
+// }
+
+// test();
 
 // readFilePromise('2.txt').catch((err)=>{
 
 //     console.log(err);
 // })
+
+// * 写入两个个文件，内容自定
+// * 等待1s
+// * 将两个文件内容读出来，最终放入第三个文件。
+// * async/await
+async function main(){
+
+    try {
+        
+        // * 同时写入
+        await Promise.all([writeFilePromise('1.txt','这是文件1'),writeFilePromise('2.txt','这是文件2')]);
+
+        // await writeFilePromise('1.txt','这是文件1');
+        // await writeFilePromise('2.txt','这是文件2');
+
+        // * 等待1s
+        await sleep(1000);
+
+        // * 同时读出
+        const [text1,text2] = await Promise.all([readFilePromise('1.txt'),readFilePromise('2.txt')]);
+
+        // const text1 = await readFilePromise('1.txt');
+        // const text2 = await readFilePromise('2.txt');
+
+        // * 写入文件
+        await writeFilePromise('3.txt',`${text1}  ${text2}`);
+
+    } catch (error) {
+
+        // * 如果出错
+        console.log(error);
+    } finally{
+
+        // * 最终执行
+        console.log(' end ');
+    }
+}
+
+main();

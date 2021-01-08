@@ -15,30 +15,30 @@ const path = require('path');
 // let promise = getPromise('test.txt');
 // console.log(promise);
 
-// readFilePromise('test.txt').then((data)=>{
+readFilePromise('test.txt').then((data)=>{
 
-//     console.log('第一个promise===>',data);
+    console.log('第一个promise===>',data);
+    
+    return readFilePromise('2.txt');
+}).then((data)=>{
 
-//     return readFilePromise('2.txt');
-// }).then((data)=>{
+    console.log('第二个promise===>',data);
 
-//     console.log('第二个promise===>',data);
+    return readFilePromise('1.txt');
+}).then((data)=>{
 
-//     return readFilePromise('1.txt');
-// }).then((data)=>{
+    console.log('第二个promise===>',data);
 
-//     console.log('第二个promise===>',data);
+    return readFilePromise('1.txt');
+}).then((data)=>{
 
-//     return readFilePromise('1.txt');
-// }).then((data)=>{
+    console.log('第二个promise===>',data);
 
-//     console.log('第二个promise===>',data);
+    return readFilePromise('1.txt');
+}).catch((error)=>{
 
-//     return readFilePromise('1.txt');
-// }).catch((error)=>{
-
-//     console.log(error);
-// })
+    console.log(error);
+})
 
 function readFilePromise(fileName){
 
