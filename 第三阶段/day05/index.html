@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick='test()'>test</button>
+    <button onclick='ajax()'>ajax</button>
+    <script src="./jquery3.5.min.js"></script>
+
+    <script>
+
+        function test(){
+
+            console.log(1);
+        }
+
+
+        function ajax(){
+
+            $.ajax({
+                type : "post",
+                // async : false,
+                url : 'http://localhost:3000/test',
+                data : {status:'12312312'},
+                success : function(result) {
+
+                
+                },
+                error : function(error){
+                    
+                
+                }
+			});
+        }
+    </script>
+</body>
+</html>

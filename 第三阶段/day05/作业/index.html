@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <form action="http://localhost:3000/test" method="post">
+
+        <div>
+            用户名<input type="text" class="username" name='username'>
+        </div>
+        <div>
+            密码<input type="password" class="password" name='password'>
+        </div>
+        <div>
+            再输入<input type="password" class="re-password" name='rePassword'>
+        </div>
+
+        <div>
+            <button class='btn'>提交</button>
+        </div>
+    </form>
+
+    <script>
+
+        let nameEle = document.getElementsByClassName('username')[0];
+        let passwordEle = document.getElementsByClassName('password')[0];
+        let rePasswordEle = document.getElementsByClassName('re-password')[0];
+        let btnEle = document.getElementsByClassName('btn')[0];
+
+        let nameChecked = false;
+        let passwordChecked = false;
+        let rePasswordChecked = false;
+
+        nameEle.onblur = checkName;
+        passwordEle.onblur = checkPassword;
+        rePasswordEle.onblur = checkRePassword;
+
+        function checkName(){
+
+            const value = nameEle.value;
+
+            const pattern = /^[a-zA-Z0-9_-]{4,16}$/
+
+            nameChecked = pattern.test(value);
+
+            if(!nameChecked){
+                alert('姓名不对');
+            }
+
+            controlBtnDisabled();
+        }
+
+        function checkPassword(){
+
+            const value = passwordEle.value;
+
+            const pattern = /^[a-zA-Z0-9_]{8,15}$/
+
+            passwordChecked = pattern.test(value);
+
+            if(!passwordChecked){
+                alert('密码不对');
+            }
+
+            controlBtnDisabled();
+        }
+
+        function checkRePassword(){
+
+            const password = passwordEle.value;
+            const rePassword = rePasswordEle.value;
+
+            rePasswordChecked = (password === rePassword);
+
+            if(!rePasswordChecked){
+                alert('两次密码输入不一致');
+            }
+
+            controlBtnDisabled();
+        }
+
+        function controlBtnDisabled(){
+
+            btnEle.disabled = !(nameChecked && passwordChecked && rePasswordChecked);
+        }
+
+
+
+    </script>
+</body>
+</html>

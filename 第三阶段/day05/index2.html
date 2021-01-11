@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div>
+        用户名<input type="text" class="username"/><span class="warning"></span>
+    </div>
+
+    <div>
+        <button class='btn'>提交</button>
+    </div>
+
+    
+    <script src='./jquery3.5.min.js'></script>
+    <script>
+
+        let ele = document.getElementsByClassName('username')[0];
+        let warningEle = document.getElementsByClassName('warning')[0];
+
+        ele.onblur = ()=>{
+
+            const value = ele.value;
+
+            $.ajax({
+                type:'get',
+                url:'http://localhost:3000/getName',
+                data:{ name : value },
+                success: (result)=>{
+                    console.log('result: ', result);
+
+                    let message = '成功'
+                    if(result.status === 'failed'){
+                        message = result.message;
+                    }
+                    // alert(message);
+                    $('.warning').text(message)
+
+                    // warningEle.innerText = message;
+                },
+                error:(err)=>{
+                    console.log(err);
+                }
+            })
+        }
+    </script>
+</body>
+</html>
