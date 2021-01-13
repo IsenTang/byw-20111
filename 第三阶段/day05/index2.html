@@ -6,14 +6,17 @@
 </head>
 <body>
     
+    <!-- <form> -->
+        <div>
+            用户名<input type="text" class="username" name='username'/><span class="warning"></span>
+        </div>
 
-    <div>
-        用户名<input type="text" class="username"/><span class="warning"></span>
-    </div>
+        <div>
+            <button class='btn' type='button'>提交</button>
+        </div>
+    <!-- </form> -->
 
-    <div>
-        <button class='btn'>提交</button>
-    </div>
+    <a href="https://www.baidu.com">123</a>
 
     
     <script src='./jquery3.5.min.js'></script>
@@ -22,13 +25,27 @@
         let ele = document.getElementsByClassName('username')[0];
         let warningEle = document.getElementsByClassName('warning')[0];
 
+        btn.onclick = ()=>{
+            $.ajax({
+                type:'get',
+                url:'...',
+                data:{
+                    username : ele.value
+                }, // *  { username: 'isen' }
+                success:(result)=>{
+
+                    console.log(result);
+                }
+            })
+        }
+
         ele.onblur = ()=>{
 
             const value = ele.value;
 
             $.ajax({
-                type:'get',
-                url:'http://localhost:3000/getName',
+                type:'get',// get post put delete
+                url:'http://192.168.1.1:3000/getName',
                 data:{ name : value },
                 success: (result)=>{
                     console.log('result: ', result);

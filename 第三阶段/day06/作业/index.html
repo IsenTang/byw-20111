@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div>
+        用户名:<input type="text" class="username"/>
+    </div>
+
+    <div>
+        <button class="btn" disabled>提交</button>
+    </div>
+
+    <script src="./jquery3.5.min.js"></script>
+    <script>
+
+        let usernameEle = document.getElementsByClassName('username')[0];
+        let btnEle = document.getElementsByClassName('btn')[0];
+
+        usernameEle.onblur = ()=>{
+
+            const value = usernameEle.value;
+            if(value.length < 5){
+                alert('用户名不对');
+                btnEle.disabled = true;
+            }else{
+                btnEle.disabled = false;
+            }
+        }
+
+        btnEle.onclick = () =>{
+
+            $.ajax({
+
+                type:'post',
+                url:'http://localhost:3000/regist',
+                data:{
+                    username : usernameEle.value
+                },
+                success:(result)=>{
+
+                    const { status } = result; 
+                    if(status === 'falied'){
+                        alert(result.message);
+                    }else{
+                        alert('成功');
+                    }
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>

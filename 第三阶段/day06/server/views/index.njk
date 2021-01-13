@@ -1,0 +1,31 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<h1>{{title}}</h1>
+<p>Welcome use {{title}}</p>
+<p> name: {{name}}</p>
+<p> gender: 
+    {% if gender === 1 %}
+        男
+    {% elif gender === 0 %}
+        女
+    {% else %}
+        未透露性别
+    {% endif %}
+</p>
+{% endblock %}
+
+{# {% block test %}
+<div>test block</div>
+{% endblock %} #}
+
+{# {% block style %}
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+{% endblock %} #}
+
+{# {% block script %}
+    <script 
+    src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.27.0/moment.min.js">
+    </script>
+{% endblock %} #}

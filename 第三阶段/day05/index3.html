@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        .container{
+            height: 300px;
+            border:1px solid black;
+            width: 200px;
+            border-top:none;
+            display: none;
+        }
+
+        .search{
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <input type="text" class="search">
+    </div>
+
+    <div class="container"></div>
+
+    <script src="./jquery3.5.min.js"></script>
+
+    <script>
+
+        let inputEle = document.getElementsByClassName('search')[0];
+        let containerEle = document.getElementsByClassName('container')[0];
+
+        let test = {};
+
+        function clearContainer(){
+            containerEle.style.display = 'none'
+
+            containerEle.innerHTML = '';
+
+            document.removeEventListener('mousedown',removeContainer);
+        }
+
+        function addContainsListener(){
+
+            document.addEventListener('mousedown',removeContainer)
+        }
+
+        function removeContainer(e){
+            
+            if(!containerEle.contains(e.target)){
+
+                clearContainer();
+            }
+        }
+
+        inputEle.onkeyup = (e) =>{
+
+            const value = inputEle.value;
+            if(value){
+                $.ajax({
+                    type:'get',
+                    url:'http://localhost:3000/getContentByKeyword',
+                    data: { keyword : value },
+                    success : function(result){
+                        console.log(' result ===>', result);
+                        test = result;
+                        console.log('test: ', test);
+                        
+                        if(result.length > 0){
+
+                            let htmlArray = result.map((item)=>{
+                                return `<div>${item}</div>`
+                            })
+
+                            containerEle.innerHTML = htmlArray.join('');
+
+                            containerEle.style.display = 'block'
+
+                            addContainsListener();
+                        }else{
+                            clearContainer();
+                        }
+                        
+                    }
+                })
+            
+                console.log(' test ===>',test);
+            }else{
+                clearContainer();
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

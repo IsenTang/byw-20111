@@ -1,0 +1,24 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+    <div>
+        用户名： <input class='name'/>
+    </div>
+
+    <div>
+        <button class='btn'>提交</button>
+    </div>
+{% endblock %}
+{% block script %}
+
+<script >
+
+    let ele = document.getElementsByClassName('name')[0];
+    let btnEle = document.getElementsByClassName('btn')[0];
+
+    btnEle.onclick = ()=>{
+        location.href = `/userInfo?name=${ele.value}`
+    }
+</script>
+{% endblock %}
