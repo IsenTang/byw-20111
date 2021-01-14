@@ -4,7 +4,7 @@ const app = new Koa()
 const router = new Router()
 
 const views = require('koa-views')
-// const session = require('koa-session2')
+const session = require('koa-session2')
 const co = require('co')
 const convert = require('koa-convert')
 const json = require('koa-json')
@@ -52,9 +52,9 @@ app.use(bodyparser())
     map: {'njk': 'nunjucks'},
     extension: 'njk'
   }))
-  // .use(session({
-  //   key:'test'
-  // }))
+  .use(session({
+    key:'banyuan'
+  }))
   .use(router.routes())
   .use(router.allowedMethods())
 
@@ -160,8 +160,7 @@ function checkUsername(val){
 
 router.get('/login', async (ctx, next) => {
   // ctx.body = 'Hello World'
-  // ctx.session.refresh()
-  // ctx.session.name = 'isen2222'
+
   await ctx.render('login')
 })
 
@@ -173,6 +172,7 @@ router.post('/userLogin',(ctx)=>{
   let data = { name,password }
 
   ctx.cookies.set('user',JSON.stringify(data))
+  ctx.session.name = 'isen2222'
   // console.log('JSON.stringify(data): ', string)
   // console.log(typeof string)
   
@@ -185,20 +185,37 @@ router.post('/userLogin',(ctx)=>{
 
 router.post('/test',(ctx)=>{
 
-  const user = ctx.cookies.get('user')
+  // const user = ctx.cookies.get('user')
   // const local = ctx.cookies.get('local')
   // console.log('local: ', local)
-  
-  console.log('user ===>',user)
-  let data = JSON.parse(user)
-  console.log('data: ', data)
-  console.log(data.name)
-  console.log('user ===>',typeof user)
+  console.log('ctx.session.name ===>',ctx.session.name)
+  // console.log('user ===>',user)
+  // let data = JSON.parse(user)
+  // console.log('data: ', data)
+  // console.log(data.name)
+  // console.log('user ===>',typeof user)
 
   ctx.response.body = {
-    user
+    
   }
 })
+
+router.get('/cookie', async (ctx, next) => {
+  // ctx.body = 'Hello World'
+  // ctx.session.refresh()
+  // ctx.session.name = 'isen2222'
+
+  const user = ctx.cookies.get('user')
+
+  console.log('user ===>',user)
+  if(user){
+    await ctx.render('cookie')
+  }else{
+    ctx.redirect('/login')
+  }
+  
+})
+
 
 
 

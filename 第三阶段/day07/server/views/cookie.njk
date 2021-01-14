@@ -1,0 +1,106 @@
+{% extends 'layout.njk' %}
+{% block content %}
+
+  <div>
+        username: <input class='username'/>
+    </div>
+
+    <div>
+        password: <input class='password'/>
+    </div>
+
+     <div>
+        gender:<select class='gender'>
+
+            <option value='0'>女</option>
+            <option value='1'>男</option>
+
+        </select>
+    </div>
+
+    <div>
+
+        <button class='btn'>
+            test
+        </button>
+    </div>
+
+{% endblock %}
+{% block script %}
+
+<script>
+
+    let usernameEle = document.getElementsByClassName('username')[0]
+    let passwordEle = document.getElementsByClassName('password')[0]
+    let genderEle = document.getElementsByClassName('gender')[0]
+    let btnEle = document.getElementsByClassName('btn')[0]
+
+    usernameEle.onblur = function(){
+
+        let data = {
+            username:usernameEle.value,
+            password:passwordEle.value,
+            gender:genderEle.value
+        }
+        if(this.value){
+            $.cookie('formData',JSON.stringify(data),{expires:1})
+        }
+    }
+
+    passwordEle.onblur = function(){
+
+        let data = {
+            username:usernameEle.value,
+            password:passwordEle.value,
+            gender:genderEle.value
+        }
+        if(this.value){
+            $.cookie('formData',JSON.stringify(data),{expires:1})
+        }
+    }
+
+    genderEle.onchange = function(){
+
+        let data = {
+            username:usernameEle.value,
+            password:passwordEle.value,
+            gender:genderEle.value
+        }
+
+        if(this.value){
+            $.cookie('formData',JSON.stringify(data),{expires:1})
+        }
+    }
+
+    btnEle.onclick = ()=>{
+
+        console.log(document.cookie);
+       
+    }
+
+    function init(){
+
+        let data = $.cookie('formData');
+
+        if(data){
+            data = JSON.parse(data);
+            console.log('data: ', data);
+
+
+            if(data.username){
+                usernameEle.value = data.username;
+            }
+
+            if(data.password){
+                passwordEle.value = data.password;
+            }
+
+            if(data.gender){
+                genderEle.value = data.gender;
+            }
+        }
+    }
+
+    init();
+</script>
+{% endblock %}

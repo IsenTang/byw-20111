@@ -29,20 +29,19 @@ btnEle.onclick = ()=>{
 
 testBtnEle.onclick = ()=>{
 
-//   $.ajax({
+  $.ajax({
 
-//     type:'post',
-//     url:'http://localhost:3000/test',
-//     data:{},
-//     success:(result)=>{
+    type:'post',
+    url:'http://localhost:3000/test',
+    data:{},
+    success:(result)=>{
     
-//       console.log(result)
+      console.log(result)
 
-//       $.removeCookie('the_cookie', { path: '/' })
-//     }
-//   })
+    }
+  })
 
-  $.removeCookie('formData', { path: '/' })
+  // $.removeCookie('formData', { path: '/' })
 }
 
 
