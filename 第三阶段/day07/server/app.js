@@ -4,6 +4,7 @@ const app = new Koa()
 const router = new Router()
 
 const views = require('koa-views')
+// const session = require('koa-session2')
 const co = require('co')
 const convert = require('koa-convert')
 const json = require('koa-json')
@@ -15,8 +16,28 @@ const path = require('path')
 
 const config = require('./config')
 const routes = require('./routes')
+const { join } = require('path')
 
 const port = process.env.PORT || config.port
+
+
+const CONFIG = {
+  key: 'koa.sess', /** (string) cookie key (default is koa.sess) */
+  /** (number || 'session') maxAge in ms (default is 1 days) */
+  /** 'session' will result in a cookie that expires when session/browser is closed */
+  /** Warning: If a session cookie is stolen, this cookie will never expire */
+  maxAge: 86400000,
+  autoCommit: true, /** (boolean) automatically commit headers (default true) */
+  overwrite: true, /** (boolean) can overwrite or not (default true) */
+  httpOnly: true, /** (boolean) httpOnly or not (default true) */
+  signed: true, /** (boolean) signed or not (default true) */
+  rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
+  renew: false, /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
+  secure: true, /** (boolean) secure cookie*/
+  sameSite: null, /** (string) session cookie sameSite options (default null, don't set it) */
+}
+
+
 
 // error handler
 onerror(app)
@@ -31,6 +52,9 @@ app.use(bodyparser())
     map: {'njk': 'nunjucks'},
     extension: 'njk'
   }))
+  // .use(session({
+  //   key:'test'
+  // }))
   .use(router.routes())
   .use(router.allowedMethods())
 
@@ -55,6 +79,8 @@ router.get('/regist', async (ctx, next) => {
   ctx.state = {
     title: 'Koa2'
   }
+
+  ctx.cookies.set('user','isen')
   await ctx.render('regist')
 })
 
@@ -128,6 +154,53 @@ function checkUsername(val){
 
   return pattern.test(val)
 }
+
+
+// ===================
+
+router.get('/login', async (ctx, next) => {
+  // ctx.body = 'Hello World'
+  // ctx.session.refresh()
+  // ctx.session.name = 'isen2222'
+  await ctx.render('login')
+})
+
+
+router.post('/userLogin',(ctx)=>{
+
+  const { name , password } = ctx.request.body
+
+  let data = { name,password }
+
+  ctx.cookies.set('user',JSON.stringify(data))
+  // console.log('JSON.stringify(data): ', string)
+  // console.log(typeof string)
+  
+  // ctx.cookies.set('user',data)
+
+  ctx.response.body = {
+    name , password 
+  }
+})
+
+router.post('/test',(ctx)=>{
+
+  const user = ctx.cookies.get('user')
+  // const local = ctx.cookies.get('local')
+  // console.log('local: ', local)
+  
+  console.log('user ===>',user)
+  let data = JSON.parse(user)
+  console.log('data: ', data)
+  console.log(data.name)
+  console.log('user ===>',typeof user)
+
+  ctx.response.body = {
+    user
+  }
+})
+
+
 
 routes(router)
 app.on('error', function(err, ctx) {

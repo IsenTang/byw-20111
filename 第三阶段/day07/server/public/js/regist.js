@@ -10,6 +10,9 @@ let usernameDuplicateChecked = false
 let passwordChecked = false
 let rePasswordChecked = false
 
+$.cookie('test','123')
+
+console.log($.cookie('test'))
 usernameEle.onblur = function(){
 
   const pattern = /^[a-zA-Z0-9_-]{4,16}$/
