@@ -1,0 +1,40 @@
+{% extends 'layout.njk' %}
+{% block content %}
+
+    <div>
+        用户名：{{username}}
+    </div>
+    <div>
+
+        年龄：{{age}}
+    </div>
+
+    <div>
+
+        性别：{% if gender === '0' %}
+                    女
+            {% elif gender === '1' %}
+                男
+            {% else %}
+                不想透露
+            {% endif %}
+    </div>
+
+    <div>
+        {% for item in foods %}
+
+            {% if item.available %}
+                <div> {{ item.name }}</div>
+            {% else %}
+                <div class='not-available'> {{ item.name }}</div>
+            {% endif %}
+            
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+
+{% block style %}
+<link rel='stylesheet', href='/css/userInfo.css'>
+{% endblock %}

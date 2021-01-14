@@ -1,0 +1,40 @@
+{% extends 'layout.njk' %}
+{% block content %}
+
+    <div>
+        用户名：<input class='username'/>
+    </div>
+    <div>
+
+        年龄：<input class='age'/>
+    </div>
+
+    <div>
+
+        性别：<select class='gender'>
+            <option value='0'>女</option>
+            <option value='1'>男</option>
+            <option value='2'>不想透露</option> 
+        </select>
+    </div>
+
+    <div>
+
+        密码：<input class='password'/>
+    </div>
+
+    <div>
+
+        重新输入：<input class='rePassword'/>
+    </div>
+
+    <div>
+
+        <button class='btn' disabled>提交</button>
+    </div>
+{% endblock %}
+
+{% block script %}
+
+<script src='/js/regist.js'></script>
+{% endblock %}
