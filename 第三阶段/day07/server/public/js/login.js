@@ -3,11 +3,13 @@ let passwordEle = document.getElementsByClassName('password')[0]
 let btnEle = document.getElementsByClassName('btn')[0]
 let testBtnEle = document.getElementsByClassName('test-btn')[0]
 init()
-// $.cookie('local','local set',{expires:1})
 
-// console.log('cookie ===>',$.cookie('local'))
+const testData = {
+  test:1
+}
+$.cookie('local',JSON.stringify(testData),{path:'/'})
 
-// console.log('http cookie ===>',$.cookie('user'))
+console.log(($.cookie('local')))
 
 btnEle.onclick = ()=>{
 

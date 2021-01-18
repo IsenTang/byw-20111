@@ -3,6 +3,7 @@ const Router = require('koa-router')
 const app = new Koa()
 const router = new Router()
 
+const cookie  = require('koa-cookie')
 const views = require('koa-views')
 const session = require('koa-session2')
 const co = require('co')
@@ -42,6 +43,8 @@ const CONFIG = {
 // error handler
 onerror(app)
 
+router.use(cookie.default())
+
 // middlewares
 app.use(bodyparser())
   .use(json())
@@ -52,6 +55,7 @@ app.use(bodyparser())
     map: {'njk': 'nunjucks'},
     extension: 'njk'
   }))
+  
   .use(session({
     key:'banyuan'
   }))
@@ -186,9 +190,15 @@ router.post('/userLogin',(ctx)=>{
 router.post('/test',(ctx)=>{
 
   // const user = ctx.cookies.get('user')
-  // const local = ctx.cookies.get('local')
-  // console.log('local: ', local)
-  console.log('ctx.session.name ===>',ctx.session.name)
+  const local = decodeURIComponent(ctx.cookies.get('local'))
+  console.log('local: ', local)
+
+
+
+  console.log((JSON.parse((local))))
+  // console.log('ctx.session.name ===>',ctx.session.name)
+
+  
   // console.log('user ===>',user)
   // let data = JSON.parse(user)
   // console.log('data: ', data)
