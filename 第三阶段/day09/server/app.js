@@ -113,7 +113,6 @@ router.post('/userRegist', async (ctx, next) => {
 
   const { age , username,password } = ctx.request.body
 
-
   let data = {
     status : 'success'
   }
