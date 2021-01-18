@@ -1,0 +1,23 @@
+
+{% extends 'layout.njk' %}
+{% block content %}
+<div>
+
+    用户名: {{ name }}
+</div>
+
+<div>
+
+    年龄: {{age}}
+</div>
+
+<div>
+
+    性别:   {% if gender === 1 %}
+                男
+            {% else %}
+                女
+            {% endif %}
+</div>
+
+{% endblock %}
