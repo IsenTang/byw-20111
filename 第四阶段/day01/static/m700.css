@@ -1,0 +1,17 @@
+.header{
+    flex-wrap: wrap;
+}
+
+.header-right-title{
+    display: none;
+}
+
+.header-right-button{
+    display: flex;
+}
+
+.header-content{
+    flex-direction: column;
+    order:1;
+    /* display: none; */
+}

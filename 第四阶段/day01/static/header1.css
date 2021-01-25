@@ -1,0 +1,45 @@
+*{
+    padding:0;
+    margin: 0;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: aquamarine;
+}
+
+.header-left{
+    width: 200px;
+    height: 60px;
+    background-color: cadetblue;
+}
+
+.header-right{
+    width: 200px;
+    height: 60px;
+    background-color: chartreuse;
+    display: flex;
+    align-items: center;
+}
+
+.header-right-title{
+    margin-left:20px;
+}
+
+.header-right-button{
+    display: none
+}
+
+.header-content{
+    background-color: crimson;
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-content-title{
+    margin-left:20px;
+}
