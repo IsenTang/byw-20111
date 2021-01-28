@@ -1,0 +1,130 @@
+*{
+    padding:0;
+    margin:0;
+}
+.container{
+    width: 400px;
+    height: 500px;
+    border:1px solid black;
+    border-radius: 15px;
+    margin:0 auto;
+    padding:20px;
+}
+
+/* cart */
+.cart{
+    display: flex;
+    flex-direction: column;
+    height:360px;
+    border-bottom: 1px solid black;
+}
+
+.cart-item{
+    display: flex;
+    /* height: */
+    /* flex-direction: row; */
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cart-item-info{
+    display: flex;
+}
+
+.cart-item-price{
+    height: 30px;
+    line-height: 30px;
+}
+
+.cart-remove-btn{
+    
+    height:30px;
+    width: 30px;
+    background-color: black;
+    color:white;
+    /* text-align: right; */
+    line-height: 30px; 
+    border:0;
+    font-size: 18px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 15px;
+    /* border-radius: 50%; */
+    outline: none;
+    cursor: pointer;
+}
+
+.cart-count{
+    height:30px;
+    width: 24px;
+    background-color: black;
+    color:white;
+    line-height: 30px;
+    font-size: 18px;
+    text-align: center; 
+}
+
+.cart-add-btn{
+
+    height:30px;
+    width: 30px;
+    background-color: black;
+    color:white;
+    /* text-align: right; */
+    line-height: 30px; 
+    border:0;
+    font-size: 18px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    /* border-radius: 50%; */
+    outline: none;
+    cursor: pointer;
+}
+
+.place-order-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.total-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top:20px;
+    font-size: 24px;
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.place-order-btn{
+    width: 280px;
+    height: 40px;
+    background-color: #0d9e65;
+    color:white;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 30px;
+    margin-top:30px;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* loading */
+.loading{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
