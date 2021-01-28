@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+/* 
+        body{
+            height: 200vh;
+            background-color: aqua;
+        } */
+        .loading{
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="loading">
+
+        <div class="loading-container">
+            loading....
+        </div>
+    </div>
+    <button class="btn">test</button>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+
+    <script>
+
+        let btnEle = document.getElementsByClassName('btn')[0];
+        let loadingELe = document.getElementsByClassName('loading')[0];
+
+        btnEle.onclick = _.throttle(()=>{
+            loadingELe.style.display = 'flex'
+
+            // setTimeout(()=>{
+            //     loadingELe.style.display = 'none';
+            //     // alert('请求发送成功')
+            // },1000)
+        },1000)
+
+        // btnEle.onclick = ()=>{
+
+            
+        // }
+    </script>
+</body>
+</html>

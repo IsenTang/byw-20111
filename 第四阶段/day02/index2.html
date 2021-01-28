@@ -1,0 +1,113 @@
+<script>
+
+    // function Parent(){
+    //     this.name = 'mike';
+    // }
+
+    // function Child(){
+    //     this.age = 12;
+    // }
+
+    // // * { name :'mike'}
+    // Child.prototype = new Parent();//Child继承Parent，通过原型，形成链条
+    // // console.log(Child.prototype);
+
+    // const child1 = new Child();
+    // // console.log(child1);
+
+    // function SuperClass () {
+    //     this.colors = ['red', 'black']
+    // }
+    // // 定义子类
+    // function SubClass () {
+    // }
+    // // 将父类的实例作为子类的原型对象
+    // SubClass.prototype = new SuperClass() // => {colors: [.....]}
+    // // 声明子类的一个实例o1
+    // let o1 = new SubClass()
+    // // 声明子类的另一个实例o2
+    // let o2 = new SubClass()
+
+    // console.log(o1);
+    // o1.colors.splice(1, 1, 'yellow');
+    // console.log(o1.colors);
+
+    // console.log(o2.colors);
+
+
+    // 定义父类
+    // function SuperClass (color) {
+    //     this.color=color
+    // }
+    // // 定义子类
+    // function SubClass () {
+    // }
+
+    // // 将父类的实例作为子类的原型对象
+    // SubClass.prototype = new SuperClass(['red'])
+    // // 创建实例对象o1并传递参数
+    // var o1 = new SubClass()
+    // // 创建实例对象o2并传递参数
+    // var o2 = new SubClass()
+    // // 打印o1和o2的color
+    // console.log(o1);
+    // console.log(o1.color)
+    // console.log(o2.__proto__.color)
+
+
+    // function Parent(age){
+    //     // console.log(this);
+    //     this.name = ['mike','jack','smith'];
+    //     this.age = age;
+    //     this.say = function () {
+    //             alert('hello');
+    //     }
+    // }
+
+    // let obj = { a : 1};
+    // parent.call(obj,10);
+    // console.log(obj);
+
+    // function Child(age){
+    //     // * {}
+    //     // * this ==> {}
+    //     this.childName = 'isen';
+    //     Parent.call(this,age);
+    //     // Parent(age);
+
+    //     // this.name = ['mike','jack','smith'];
+    //     // this.age = age;
+    //     // this.say = function () {
+    //     //         alert('hello');
+    //     // }
+    // }
+
+    // const c1 = new Child(10);
+    // console.log(c1);
+    // const c2 = new Child(20);
+    // console.log(c2);
+
+    function Parent(age){
+        this.name = ['mike','jack','smith'];
+        this.age = age; 
+    }
+
+    Parent.prototype.say = function(){
+
+        console.log('hello');
+    }
+
+    function Child(age){
+        Parent.call(this,age);
+    }
+    Child.prototype = new Parent();// ==> { ...}
+    Child.prototype.contructor = Child;
+
+    const c1 = new Child(10);
+    console.log(c1);
+    // console.log(c1.__proto__);
+    c1.say()
+
+
+
+</script>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        用户名:<input class="username"/>
+    </div>
+    <div>
+        age:<input class="age"/>
+    </div>
+    <div>
+        <button class="btn">test</button>
+    </div>
+    <script>
+
+        // localStorage.setItem('name','isen');
+        // localStorage.setItem('age',29);
+
+        // console.log(localStorage.getItem('name'));
+
+        // // localStorage.removeItem('name');
+        // localStorage.clear();
+
+        // let data = {
+        //     name : 'isen',
+        //     age : 29
+        // }
+
+        
+        // localStorage.setItem('userInfo',JSON.stringify(data));
+
+        // console.log(JSON.parse(localStorage.getItem('userInfo')))
+
+        // localStorage.setItem('str','str');
+    
+        function setStorage (key, data) {
+            if(!key) return;
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        function getStorage (key) {
+            if(!key) return;
+            let res = localStorage.getItem(key);
+            try {
+                return JSON.parse(res);
+            } catch (err) {
+                console.log(err);
+                return res;
+            }
+        }
+
+        // console.log(getStorage('str'))
+
+        let nameEle = document.getElementsByClassName('username')[0]
+        let ageEle = document.getElementsByClassName('age')[0]
+        let btnEle = document.getElementsByClassName('btn')[0]
+
+        nameEle.onblur = function(){
+
+            set();
+        }
+
+        ageEle.onblur = function (){
+
+            set();
+        }
+
+        btnEle.onclick = function(){
+
+            nameEle.value = '';
+            ageEle.value = '';
+            localStorage.removeItem('form')
+        }
+
+        function set(){
+
+            let data = {
+                username : nameEle.value,
+                age : ageEle.value
+            }
+            setStorage('form',data);
+        }
+
+        function init(){
+
+            const data = getStorage('form');
+            if(data){
+                if(data.username){
+                    nameEle.value = data.username
+                }
+
+                if(data.age){
+                    ageEle.value = data.age
+                }
+            }
+            
+        }
+
+        init();
+
+        // sessionStorage.setItem('item','item');
+        // localStorage.setItem('item','item');
+    </script>
+</body>
+</html>

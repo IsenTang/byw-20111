@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .search-container{
+            width: 200px;
+            height: 200px;
+            overflow: scroll;
+            border:1px solid black;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        搜索:<input class="search"/>
+    </div>
+    <div class="search-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
+    <script>
+
+
+        let searchEle = document.getElementsByClassName('search')[0];
+        let searchContainerEle = document.getElementsByClassName('search-container')[0];
+
+        let dataArray = ['1','123','isen'];
+        let array = [];
+        // searchEle.onkeyup = function(){
+
+            
+        // }
+
+        searchEle.onkeyup = _.debounce(()=>{
+            console.log('in');
+            array = dataArray.filter((item)=>{
+
+                return item.includes(searchEle.value);
+            })
+
+            if(array.length > 0){
+                searchContainerEle.style.display = 'block';
+
+                let html = '';
+
+                array.forEach((item)=>{
+
+                    html += `<div>${item}</div>`;
+                })
+
+                searchContainerEle.innerHTML = html;
+            }else{
+                searchContainerEle.innerHTML = '';
+                searchContainerEle.style.display = 'none'
+            }
+        },500)
+
+        // searchEle.onkeyup = function(){
+
+        //     console.log(searchEle.value);
+        // }
+    </script>
+</body>
+</html>
