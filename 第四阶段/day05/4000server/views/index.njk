@@ -1,0 +1,32 @@
+{% extends 'layout.njk' %}
+{% block content %}
+<h1>{{title}}</h1>
+<p>Welcome use {{title}}</p>
+<button class='btn'>test</button>
+<a href='http://localhost:3000/xss'>test</a>
+<a href='http://localhost:3000/xss?content=<script>alert(1);</script>'>3000test</a>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        const ele = document.getElementsByClassName('btn')[0];
+
+        ele.onclick = ()=>{
+            $.ajax({
+                type:'post',
+                url:'http://localhost:3000/test',
+                data:{},
+                success:(result)=>{
+                    
+                },
+                xhrFields: {
+                    withCredentials: true
+                }
+            })
+        }
+    </script>
+{% endblock %}
+
+
