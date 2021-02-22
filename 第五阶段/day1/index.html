@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+
+    <div id="app">
+        <p>{{ msg }}{{ test }}</p>
+        <p>qweqwe</p>
+        <p v-text="msg"></p>
+        <div v-html="htmlData"></div>
+
+        <h2 v-if="age>20">大学生</h2>
+        <h2 v-else-if="age>10">初中生</h2>
+        <h2 v-else>小学生</h2>
+
+        <h3 v-show="isShow">hhhhh</h3>
+        <h4 v-if="isShow">hhhh444</h4>
+    </div>
+
+
+
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue!',
+                test: '12345<p>哈哈</p>',
+                htmlData: '<h1>哈哈哈</h1>',
+                age: 15,
+                isShow: false
+            }
+        })
+
+
+    </script>
     
 </body>
 </html>

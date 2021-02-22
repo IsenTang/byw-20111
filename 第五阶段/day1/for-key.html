@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        p{
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <p v-for="item in list" :key="item.id">{{ item.text }}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    {text: 'A', id: 1},
+                    {text: 'B', id: 2},
+
+                    {text: 'C', id: 3},
+                    {text: 'D', id: 4},
+                    {text: 'E', id: 5}
+                ]
+            },
+            mounted() {
+                setTimeout(()=>{
+                    this.list.splice(2, 0, {text: 'F', id: 6})
+                }, 2000)
+            },
+        })
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+</head>
+<body>
+
+    <div id="app">
+        <!-- <h4>我叫{{ person.name }}，今年{{ person.age }}岁了</h4>
+        <ul>
+            <li v-for="item in list">{{ item }}</li>
+        </ul>
+        <ol>
+            <li v-for="item in list2">{{ item.name }}今年{{ item.age }}岁了</li>
+        </ol> -->
+        <p v-for="(obj, key, index ) in person">{{ obj }}--{{ key }}--{{ index }}</p>
+
+        <img v-bind:src="url" alt="">
+        <img :src="url" alt="">
+        <input type="text" :value="url">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list:  ['茶', '咖啡', '面包', '奶糖'],
+                person: {
+                    name: '小名',
+                    age: 12,
+                },
+                list2: [
+                    {name: '小明', age: 23},
+                    {name: '小红', age: 34}
+                ],
+                url: 'https://by-image.oss-cn-shanghai.aliyuncs.com/yfront/static/home/pic_zizhu_shouye_1.png'
+            }
+        })
+
+
+    </script>
+
+
+
+    <!-- <ul id="ulContainer"></ul>
+    <script>
+        var list = ['茶', '咖啡', '面包', '奶糖2']
+        var ulDom = $("#ulContainer")
+
+        list.forEach((item, index)=>{
+            ulDom.append(`<li>${item}</li>`)
+        })
+
+    </script> -->
+    
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .row p {
+            width: 110px;
+            text-align: center;
+        }
+        .row img {
+            width: 40px;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div id="app">
+        <div class="row">
+            <span style="width: 40px"></span>
+            <p v-for="title in titleList">{{ title }}</p>
+        </div>
+        
+        <div v-for="(item, index) in list" class="row">
+            <!-- <img :src="`./image/n${index+1}.jpg`" alt=""> -->
+            
+            <img v-if="index==0" src="./image/n1.jpg" alt="">
+            <img v-else-if="index==1" src="./image/n2.jpg" alt="">
+            <img v-else-if="index==2" src="./image/n3.jpg" alt="">
+
+            <span v-else style="width: 40px"></span>
+
+            <p>{{ item.name }}</p>
+            <p>{{ item.math }}</p>
+            <p>{{ item.chinese }}</p>
+            <p>{{ item.english }}</p>
+            <p>{{ item.geography }}</p>
+            <p>{{ item.history }}</p>
+            <p>{{ item.allCount }}</p>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                titleList: ['姓名', '数学', '语文', '英语', '地理', '历史', '总分'],
+                list: [{
+                        name: '肖锋',
+                        math: 99,
+                        chinese: 100,
+                        english: 100,
+                        geography: 99,
+                        history: 98,
+                        allCount: 496
+                    }, {
+                            name: '安澜',
+                            math: 90,
+                            chinese: 98,
+                            english: 89,
+                            geography: 96,
+                            history: 100,
+                            allCount: 473
+                        }, {
+                            name: '路小北',
+                            math: 88,
+                            chinese: 87,
+                            english: 77,
+                            geography: 86,
+                            history: 78,
+                            allCount: 416
+                        }, {
+                            name: '许巍',
+                            math: 39,
+                            chinese: 40,
+                            english: 76,
+                            geography: 90,
+                            history: 59,
+                            allCount: 304
+                        }
+                    ]
+            }
+        })
+    </script>
+    
+</body>
+</html>

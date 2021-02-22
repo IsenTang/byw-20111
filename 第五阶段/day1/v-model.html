@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="name">
+        <p>名字是：{{ name }}</p>
+
+
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>是否选中
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                checked: true
+            },
+            mounted() {
+                if(this.checked) {
+                    //  执行选中的代码
+                    ajax
+                } else {
+                    // 执行 未选中代码
+                }
+            },
+        })
+
+    </script>
+    
+</body>
+</html>
