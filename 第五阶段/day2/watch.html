@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        var App = {
+            template: `
+                <div>
+                    <input type="text" v-model="obj2.obj3.obj5">
+                    <input type="text" v-model="str2">
+                </div>
+            `,
+            data () {
+                return {
+                    str: '',
+                    str2: 'abc',
+                    obj: {
+                        a: 1
+                    },
+                    obj2: {
+                        obj3: {
+                            obj4: '123',
+                            obj5: 33
+                        },
+                        obj6: '789'
+                    }
+                }
+            },
+            watch: {
+                str (newValue, oldValue) {
+                    console.log('new', newValue)
+                    console.log('old', oldValue)
+                },
+                "obj.a" (newV, oldV) {
+                    console.log(newV, oldV)
+                },
+                obj2: {
+                    handler (newValue, oldValue) {
+                        console.log('new', newValue)
+                        console.log('old', oldValue)
+                    },
+                    deep: true
+                },
+                str2: {
+                    handler (newValue, oldValue) {
+                        setTimeout(()=>{
+                            console.log('new', newValue)
+                            console.log('old', oldValue)
+                        }, 2000)
+                    },
+                    immediate: true
+                }
+                
+            
+            }
+        }
+
+        new Vue({
+            render: h=> h(App)
+        }).$mount("#app")
+    </script>
+    
+</body>
+</html>

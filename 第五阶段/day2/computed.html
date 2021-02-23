@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        let App = {
+            template: `
+                <div>
+                    <button @click="toggleShow">show</button>
+
+                    <h2 v-if="isShow">{{ fullName }}---</h2>
+
+                    <h1 v-if="isShow">{{ getFullName() }}</h1>
+
+                    <button @click="changeName">change</button>
+
+                    <h3>{{ msg }}</h3>
+                    <h3>{{ reversedMessage }}</h3>
+                    <h3>{{ price(2) }}</h3>
+                </div>
+            `,
+            data () {
+                return {
+                    fistName: 'jiang',
+                    lastName: 'wen',
+                    isShow: true,
+                    msg: 'hello Vue'
+                }
+            },
+            computed: {
+                fullName () {
+                    console.log('执行了计算属性')
+                    // computed不支持异步
+                    // setTimeout(()=>{
+                        return this.fistName + this.lastName
+                    // }, 2000)
+                    
+                },
+                reversedMessage () {
+                    return this.msg.split('').reverse().join('')
+                },
+                price (ll) {
+                    return function (ll) {
+                        return 10 * ll
+                    }
+                }
+            },
+            methods: {
+                getFullName () {
+                    console.log('执行了方法')
+                    return this.fistName + this.lastName
+                },
+                toggleShow () {
+                    this.isShow = !this.isShow
+                },
+                changeName () {
+                    this.fistName = 'liu-'
+                }
+            },
+
+        }
+
+        new Vue({
+            render: h=>h(App)
+        }).$mount("#app")
+    </script>
+    
+</body>
+</html>

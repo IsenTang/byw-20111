@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        var App = {
+            template: `
+                <div>
+                    <div class="box"></div>
+                    <div style="width: 50px;height: 50px;background: #f97197;"></div>
+                    <div :class="[str, str2, 3>4 ? 'yes' : 'no']"></div>
+                    <p :class="{ active: isActive }"></p>
+                    <p :style="{ color: 'red', fontSize: '30px' }">会计师电话费</p>
+                    <p :style="{ color: isActive ? 'blue' : 'yellow' }">和是两地分居</p>
+                    <p :style="styles">收到了佛教</p>
+                </div>
+            `,
+            data () {
+                return {
+                    str: 'box2',
+                    str2: 'box3',
+                    isActive: true,
+                    styles: {
+                        fontSize: '30px',
+                        color: 'pink',
+                        backgroundColor: '#f3f3f3'
+                    }
+                }
+            }
+        }
+
+        new Vue({
+            render: h => h(App)
+        }).$mount("#app")
+    </script>
+    
+</body>
+</html>

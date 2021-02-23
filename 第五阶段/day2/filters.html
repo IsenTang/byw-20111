@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+
+        let App = {
+            template: `
+                <div>
+                    <p>{{ str | filter2 }}</p>
+                </div>
+            `,
+            data () {
+                return {
+                    str: '12345'
+                }
+            }
+        }
+
+        let App2 = {
+            template: `
+                <div>
+                    <p>{{ time | filterTime }}</p>
+                    <p>{{ time | filter2 }}</p>
+                </div>
+            `,
+            data () {
+                return {
+                    str: '2',
+                    time: 1614047727870
+                }
+            },
+            filters: {
+                filter2 (value) {
+                    return '处理之后的 ' + value
+                }
+            }
+        }
+
+        Vue.filter('filterTime', function (time) {
+            let year = new Date(time).getFullYear();
+            let month = new Date(time).getMonth()+1;
+            let day = new Date(time).getDate();
+            return year + '年' + month + '月' + day + '日'
+        })
+
+        new Vue({
+            render: h => h(App)
+        }).$mount("#app")
+
+
+    </script>
+    
+</body>
+</html>

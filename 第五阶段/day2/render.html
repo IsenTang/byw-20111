@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .big {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        .small {
+            width: 100px;
+            height: 100px;
+            background-color: blueviolet;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        
+    </div>
+
+    <script>
+
+        var App = {
+            template: `
+                <div>
+                    <button @click="func">click</button>
+                    <button @click.once="fun2('参数')">click2</button>
+                    <p v-for="item in list" :key="item.id">{{item.id}}11</p>
+                    <div @click="bigClick" class="big">
+                        <div @click.stop="smallClick" class="small"></div>
+                    </div>
+                    <a href="https://www.baidu.com" @click.prevent>baidu</a>
+                    <input type="text" v-model="searchValue" @keyup.enter="onEnter" @change="changeFun">
+                </div>
+            `,
+            data () {
+                return {
+                    list: [
+                        {text: 'A', id: 1},
+                        {text: 'B', id: 2},
+                        {text: 'C', id: 3},
+                        {text: 'D', id: 4},
+                        {text: 'E', id: 5}
+                    ],
+                    searchValue: ''
+                }
+            },
+            mounted() {
+                this.func();
+                // this.func2();
+            },
+            methods: {
+                func () {
+                    console.log(this);
+                },
+                fun2 (a) {
+                    console.log(a);
+                },
+                bigClick () {
+                    console.log('外层div')
+                },
+                smallClick () {
+                    console.log('内层div')
+                },
+                aClick () {
+                    console.log('a')
+                },
+                onEnter () {
+                    console.log('点击回车', this.searchValue);
+                },
+                changeFun (e) {
+                    console.log(e)
+                }
+            },
+        }
+
+        new Vue({
+
+            render: h => h(App)
+            // render: h => h('div', {
+            //         attrs: {
+            //             id: "box",
+            //             class: 'haha',
+            //         },
+            //         style: {
+            //             color: "red",
+            //             fontSize: '30px'
+            //         }
+            //     }, [
+            //         h('a', {
+            //             attrs: {
+            //                 href: '##'
+            //             }
+            //         }, 'ass')
+            //     ])
+        }).$mount("#app")
+
+    </script>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <input type="text" v-model="sex">
+        <div v-if="sex=='男'">
+            <img src="./man.jpg" alt="">
+            <h2>男生入口</h2>
+        </div>
+        <div v-else-if="sex=='女'">
+            <img src="./woman.jpg" alt="">
+            <h2>女生入口</h2>
+        </div>
+        <div v-else>
+            <h2>请输入您的性别</h2>
+        </div>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                sex: ''
+            }
+        })
+    </script>
+    
+</body>
+</html>
