@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- vue 包 -->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .row {
+            display: flex;
+            justify-content: space-between;
+            width: 500px;
+            padding: 10px;
+            background-color: #f3f3f3;
+            margin: 0 0 10px;
+        }
+        .right {
+            display: flex;
+        }
+        .right div{
+            display: flex;
+            align-items: center;
+        }
+        .right button {
+            width: 50px;
+            height: 50px;
+        }
+        .right h1 {
+
+            font-size: 16px;
+        }
+        .right h2 {
+            font-size: 16px;
+            width: 100px;
+            text-align: center;
+        }
+        .container {
+            width: 500px;
+        }
+        .container h3 {
+            text-align: right;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        
+    </div>
+
+    <script>
+        var children = {
+            template: `
+                <div>
+                    <div class="row">
+                        <p>{{ childItem.name }}</p>
+                        <div class="right">
+                            <h1>￥ {{ childItem.price }}</h1>
+                            <div>
+                                <button>-</button>
+                                <h2>{{ childItem.count }}</h2>
+                                <button>+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            props: ['childItem'],
+            data () {
+                return {
+                }
+            },
+            mounted() {
+                console.log(this.childItem)
+            },
+        }
+
+        let App = {
+            template: `
+                <div class="container">
+                    <template v-for="item in list">
+                        <children :childItem="item"></children>
+                    </template>
+                    
+                    <h3>总价格：{{ allPrice }}</h3>
+                </div>
+            `,
+            data () {
+                return {
+                    list: [
+                        {name: '苹果', price: 10, count: 1},
+                        {name: '香蕉', price: 20, count: 1},
+                        {name: '榴莲', price: 50, count: 1},
+                        {name: '西瓜', price: 100, count: 1},
+                    ]
+                }
+            },
+            components: {
+                children
+            },
+            computed: {
+                allPrice () {
+                    let sum = 0;
+                    this.list.forEach(item => {
+                        sum += item.price * item.count
+                    });
+                    return sum
+                }
+            },
+            methods: {
+                down (item) {
+                    if(item.count>1) {
+                        item.count -= 1;
+                    } else {
+                        alert('最少买一件哦')
+                    }
+                },
+                add (item) {
+                    if(item.count<4) {
+                        item.count += 1;
+                    } else {
+                        alert('商品没有更多库存了')
+                    }
+                }
+            },
+        }
+
+        new Vue({
+            render: h => h(App)
+        }).$mount("#app")
+    </script>
+    
+</body>
+</html>
