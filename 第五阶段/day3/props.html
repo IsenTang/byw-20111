@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app"></div>
+
+    <script>
+        var child = {
+            template: `
+                <div>
+                    <h2>组件</h2>
+                    <p>{{ childStr }}</p>
+                    <button @click="fun">给父组件传参数</button>
+                </div>
+            `,
+            props: {
+                childStr: {
+                    type: String,
+                    // require: true,
+                    default: '默认值',
+                    // validator (t) { 
+                    //     return t === 'aaa' || t === 'bbb'
+                    // },
+                }
+            },
+            methods: {
+                fun () {
+                    this.$emit('add', {
+                        index: 12
+                    })
+                }
+            },
+        }
+
+        // 注册成全局组件
+        // Vue.component('child', child);
+
+
+        var App = {
+            template: `
+                <div>
+                    <h1>主页{{ count }}</h1>
+                    <child :childStr="str" @add="addCount"></child>
+                </div>
+            `,
+            data () {
+                return {
+                    str: '父页面传过来的参数',
+                    count: 1
+                }
+            },
+            components: { child },
+            methods: {
+                addCount (data) {
+                    console.log('data---',data.index)
+                    this.count += data.index
+                }
+            },
+        }
+
+        new Vue({
+            render: h => h(App)
+        }).$mount("#app")
+    </script>
+    
+</body>
+</html>

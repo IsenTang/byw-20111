@@ -61,9 +61,9 @@
                         <div class="right">
                             <h1>￥ {{ childItem.price }}</h1>
                             <div>
-                                <button>-</button>
+                                <button @click="down">-</button>
                                 <h2>{{ childItem.count }}</h2>
-                                <button>+</button>
+                                <button @click="add">+</button>
                             </div>
                         </div>
                     </div>
@@ -74,8 +74,14 @@
                 return {
                 }
             },
-            mounted() {
-                console.log(this.childItem)
+            methods: {
+                down () {
+                    this.$emit('down', this.childItem)
+                    // this.childItem.count-=1
+                },
+                add () {
+                    this.$emit('add', this.childItem)
+                }
             },
         }
 
@@ -83,7 +89,7 @@
             template: `
                 <div class="container">
                     <template v-for="item in list">
-                        <children :childItem="item"></children>
+                        <children :childItem="item" @down="down" @add="add"></children>
                     </template>
                     
                     <h3>总价格：{{ allPrice }}</h3>
@@ -91,6 +97,7 @@
             `,
             data () {
                 return {
+                    clickName: 'lesson',  // 'set'
                     list: [
                         {name: '苹果', price: 10, count: 1},
                         {name: '香蕉', price: 20, count: 1},

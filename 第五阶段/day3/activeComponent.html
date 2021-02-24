@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态组件</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .left {
+            width: 300px;
+            height: 700px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: #ddd;
+        }
+        .right {
+            position: fixed;
+            left: 300px;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: tomato;
+        }
+        ul {
+            list-style: none;
+        }
+        ul li {
+            line-height: 60px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+    
+    <script>
+
+        var Home = {
+            template:  `
+                <div>
+                    <h1>主页</h1>
+                </div>
+            `
+        }
+
+        var setPage = {
+            template: `
+                <div>
+                    <h1>设置</h1>
+                </div>
+            `
+        }
+
+        var lesson = {
+            template: `
+                <div>
+                    <h1>我的课程</h1>
+                </div>
+            `
+        }
+
+        var App = {
+            template: `
+                <div>
+                    <div class="left">
+                        <ul>
+                            <li @click="changeNav('Home')">主页</li>
+                            <li @click="changeNav('setPage')">设置</li>
+                            <li @click="changeNav('lesson')">课程</li>
+                        </ul>
+                    </div>
+
+                    <div class="right">
+                        <component :is="active"></component>
+                    </div>
+                    
+                </div>
+            `,
+            components: { Home, setPage, lesson },
+            data () {
+                return {
+                    active: 'Home'
+                }
+            },
+            methods: {
+                changeNav (name) {
+                    console.log('name', name);
+                    this.active = name;
+                }
+            },
+        }
+
+        new Vue({
+            render: h => h(App)
+        }).$mount("#app")
+    </script>
+</body>
+</html>
