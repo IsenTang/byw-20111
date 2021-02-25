@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- vue 包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+        .fixed-nav {
+            height: 60px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgb(47, 130, 179);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .header-main{
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background-color: #f97197;
+        }
+        .header-main img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+
+        var headerCom = {
+            template: `
+                <div class="header-main">
+                    <img src="https://by-image.oss-cn-shanghai.aliyuncs.com/images/160577172956696075.jpg" >
+
+                    <div>
+                        {{ centerFont }}
+                    </div>
+
+                    <div>
+                        {{ rightFont }}
+                    </div>
+                </div>
+            `,
+            props: {
+                centerFont: {
+                    type: String
+                },
+                rightFont: {
+                    type: String
+                }
+            }
+        }
+
+        var msg = {
+            template:`
+                <div>
+                    <headerCom centerFont="消息" rightFont="按钮1"></headerCom>
+                    消息页面
+                </div>
+            `,
+            components: { headerCom }
+        }
+
+        var person = {
+            template:`
+                <div>
+                    <headerCom centerFont="联系人" rightFont="按钮2"></headerCom>
+                    联系人页面
+                </div>
+            `,
+            components: { headerCom }
+        }
+
+        var news = {
+            template:`
+                <div>
+                    <headerCom centerFont="动态" rightFont="按钮3"></headerCom>
+                    动态页面
+                </div>
+            `,
+            components: { headerCom }
+        }
+
+        var App = {
+            template: `
+                <div>
+                    <component :is="activeNav"></component>
+                    <div class="fixed-nav">
+                        <div
+                        v-for="item in navList"
+                        @click="changeNav(item.activeName)"
+                        :style="{ color: activeNav===item.activeName? '#fff': '#000' }"
+                        >{{ item.name }}</div>
+                    </div>
+                </div>
+            `,
+            data () {
+                return {
+                    navList: [
+                        {name: '消息', activeName: 'msg'},
+                        {name: '联系人', activeName: 'person'},
+                        {name: '动态', activeName: 'news'},
+                    ],
+                    activeNav: 'msg'
+                }
+            },
+            components: { msg, person, news },
+            methods: {
+                changeNav (name) {
+                    this.activeNav = name;
+                }
+            },
+        }
+
+        new Vue({
+            render: h=>h(App)
+        }).$mount("#app")
+    </script>
+    
+</body>
+</html>
