@@ -1,13 +1,33 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import Work from '../work/index.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
+        name: 'root',
+        component: Work,
+        redirect: { name: 'person'},
+        children: [
+            {
+                path: 'person',
+                name: 'person',
+                component: ()=> import('../work/person.vue')
+            },
+            {
+                path: 'message',
+                name: 'message',
+                component: ()=> import('../work/message.vue')
+            }
+        ]
+        
+    },
+    {
+
+        path: '/home',
         name: 'Home',
         component: Home
         // 命名视图
